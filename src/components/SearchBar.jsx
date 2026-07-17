@@ -1,0 +1,15 @@
+import React from 'react';
+
+export default function SearchBar({ searchTerm, onSearchChange }) {
+  return (
+      <div className="search-container">
+            <input
+                    type="text"
+                            placeholder="🔍 Search study methods by name..."
+                                    value={searchTerm}
+                                            onChange={(e) => onSearchChange(e.target.value)}
+                                                    className="search-input"
+                                                          />
+                                                              </div>
+                                                                );
+                                                                }
