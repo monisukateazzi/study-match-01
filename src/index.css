@@ -594,3 +594,14 @@ body {
 .quiz-restart-btn:hover {
   background-color: var(--primary-light);
 }
+
+.recommended-card-wrapper {
+    max-width: 400px;
+    margin: 1.5rem auto;
+    text-align: left;
+}
+
+.recommended-card-wrapper .method-card {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    border: 2px solid var(--primary-light);
+}
