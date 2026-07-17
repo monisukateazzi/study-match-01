@@ -86,28 +86,32 @@ export default function App() {
 
       <section className="quiz-section">
         {!quizStarted ? (
-          <div className="quiz-start-card">
-            <h3>Not sure which study method is right for you?</h3>
+          <div className="quiz-intro-card">
+            <h2>Not sure which study method is right for you?</h2>
             <p>Take our quick 3-question quiz to find your perfect match!</p>
-            <button className="quiz-btn" onClick={() => setQuizStarted(true)}>Start Match Quiz</button>
+            <button className="quiz-start-btn" onClick={() => setQuizStarted(true)}>
+              Start Match Quiz
+            </button>
           </div>
         ) : (
-          <div className="quiz-card">
+          <div className="quiz-container">
             <div className="quiz-header">
-              <span>Study Style Quiz</span>
+              <span className="quiz-score-live">Study Style Quiz</span>
               {currentQuestion < quizQuestions.length && (
-                <span className="quiz-progress">Question {currentQuestion + 1} of {quizQuestions.length}</span>
+                <span className="quiz-progress">
+                  Question {currentQuestion + 1} of {quizQuestions.length}
+                </span>
               )}
             </div>
 
             {currentQuestion < quizQuestions.length ? (
-              <div className="quiz-body">
-                <h4>{quizQuestions[currentQuestion].question}</h4>
-                <div className="quiz-options">
+              <div className="quiz-question-section">
+                <h4 className="quiz-question-text">{quizQuestions[currentQuestion].question}</h4>
+                <div className="quiz-options-list">
                   {quizQuestions[currentQuestion].options.map((option, index) => (
                     <button 
                       key={index} 
-                      className="option-btn"
+                      className="quiz-option-btn"
                       onClick={() => handleAnswerSelect(option.value)}
                     >
                       {option.text}
@@ -116,23 +120,25 @@ export default function App() {
                 </div>
               </div>
             ) : (
-              <div className="quiz-result">
-                <h4>Your Perfect Match Is:</h4>
+              <div className="quiz-results-summary">
+                <h4 className="quiz-results-title">Your Perfect Match Is:</h4>
                 {quizRecommendation ? (
-                  <div className="recommended-card-wrapper">
+                  <div style={{ margin: '1.5rem 0', textAlign: 'left' }}>
                     <MethodCard method={quizRecommendation} />
                   </div>
                 ) : (
-                  <p>We couldn't generate a specific match. Check out the full list below!</p>
+                  <p style={{ color: 'var(--text-muted)', margin: '1rem 0' }}>
+                    We couldn't generate a specific match. Check out the full list below!
+                  </p>
                 )}
-                <button className="quiz-btn-secondary" onClick={resetQuiz}>🔄 Retake Quiz</button>
+                <button className="quiz-restart-btn" onClick={resetQuiz}>
+                  🔄 Retake Quiz
+                </button>
               </div>
             )}
           </div>
         )}
       </section>
-
-      <hr className="section-divider" />
 
       <main className="app-content">
         <div className="controls-section">
@@ -145,7 +151,7 @@ export default function App() {
         </div>
 
         {filteredMethods.length === 0 ? (
-          <div className="no-results">
+          <div className="no-results" style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}>
             <p>No study methods found. Try another keyword or filter criteria.</p>
           </div>
         ) : (
@@ -156,7 +162,6 @@ export default function App() {
           </div>
         )}
 
-        <hr className="section-divider" />
         <AddMethodForm onAddMethod={handleAddMethod} />
       </main>
     </div>
