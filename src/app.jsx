@@ -89,12 +89,12 @@ export default function App() {
           <div className="quiz-start-card">
             <h3>Not sure which study method is right for you?</h3>
             <p>Take our quick 3-question quiz to find your perfect match!</p>
-            <button className="quiz-btn" onClick={() => setQuizStarted(true)}>🚀 Start Match Quiz</button>
+            <button className="quiz-btn" onClick={() => setQuizStarted(true)}>Start Match Quiz</button>
           </div>
         ) : (
           <div className="quiz-card">
             <div className="quiz-header">
-              <span>🎯 Study Style Quiz</span>
+              <span>Study Style Quiz</span>
               {currentQuestion < quizQuestions.length && (
                 <span className="quiz-progress">Question {currentQuestion + 1} of {quizQuestions.length}</span>
               )}
@@ -117,7 +117,7 @@ export default function App() {
               </div>
             ) : (
               <div className="quiz-result">
-                <h4>🎉 Your Perfect Match Is:</h4>
+                <h4>Your Perfect Match Is:</h4>
                 {quizRecommendation ? (
                   <div className="recommended-card-wrapper">
                     <MethodCard method={quizRecommendation} />
